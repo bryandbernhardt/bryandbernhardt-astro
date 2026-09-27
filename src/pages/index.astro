@@ -1,0 +1,532 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = 'Bryan Dietrich Bernhardt — Full Stack Developer';
+const pageDescription = 'Site profissional e portfólio de Bryan Dietrich Bernhardt, Full Stack Developer especializado em arquitetura web moderna e performance.';
+
+const stackHighlights = [
+  '.NET',
+  'Angular',
+  'C#',
+  'TypeScript',
+  'ML.NET',
+  'Node.js',
+  'SQL',
+  'Docker',
+  'Linux',
+  'Git',
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <section class="hero-section" aria-labelledby="hero-title">
+    <div class="container hero-container">
+      <div class="hero-status-badge" role="status">
+        <span class="status-pulse" aria-hidden="true">
+          <span class="status-pulse-dot"></span>
+        </span>
+        <span>Disponível para novos projetos</span>
+      </div>
+
+      <div class="hero-header-group">
+        <h1 id="hero-title" class="hero-title">
+          Bryan Dietrich Bernhardt
+        </h1>
+        <p class="hero-subtitle">
+          Full Stack Developer
+        </p>
+      </div>
+
+      <p class="hero-description">
+        Desenvolvedor Full Stack especializado em .NET, Vue/Angular, Node.js e tecnologias modernas.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contato" class="btn btn-primary">
+          <span>Entrar em contato</span>
+          <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a href="#projetos" class="btn btn-secondary">
+          <span>Ver projetos</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Sobre (Estrutura Base) -->
+  <section id="sobre" class="content-section" aria-labelledby="sobre-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="sobre-title" class="section-title">Sobre</h2>
+        <p class="section-lead">
+          Trajetória, princípios de engenharia e especialidades técnicas.
+        </p>
+      </div>
+
+      <div class="ui-card about-card">
+        <p class="about-text">
+          Desenvolvedor Full Stack com atuação no ciclo completo de desenvolvimento de software — desde o design de APIs resilientes até a entrega de interfaces web rápidas e acessíveis.
+        </p>
+
+        <div class="stack-block">
+          <h3 class="stack-title">Tecnologias & Ferramentas</h3>
+          <ul class="chip-list" role="list">
+            {
+              stackHighlights.map((tech) => (
+                <li>
+                  <span class="ui-chip">{tech}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Projetos (Estrutura Base com Cards) -->
+  <section id="projetos" class="content-section" aria-labelledby="projetos-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="projetos-title" class="section-title">Projetos</h2>
+        <p class="section-lead">
+          Projetos recentes e arquiteturas em produção.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- OK -->
+        <article class="ui-card project-card">
+          <div class="project-card-header">
+            <span class="project-tag">Full Stack software engineer</span>
+            <span class="project-year" aria-label="Ano">2026</span>
+          </div>
+          <h3 class="project-title">OK Automotive distributor ecosystem</h3>
+          <p class="project-description">
+            Developed end-to-end modules, from data architecture and modeling through backend and frontend implementation. Built and trained machine learning models, integrating them via APIs. Resolved bugs and actively participated in Scrum meetings and planning sessions for new features and projects.
+          </p>
+          <div class="project-techs">
+            <span class="ui-chip">.NET</span>
+            <span class="ui-chip">Angular</span>
+            <span class="ui-chip">C#</span>
+            <span class="ui-chip">TypeScript</span>
+            <span class="ui-chip">ML.NET</span>
+          </div>
+          <div class="project-footer">
+            <a href="#contato" class="project-link" aria-label="Ver detalhes do Projeto em Destaque 01">
+              <span>Ver detalhes</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card de Projeto Base 2 -->
+        <article class="ui-card project-card">
+          <div class="project-card-header">
+            <span class="project-tag">Full Stack software engineer</span>
+            <span class="project-year" aria-label="Ano">2026</span>
+          </div>
+          <h3 class="project-title">Minha Visita</h3>
+          <p class="project-description">
+            I developed and maintained scalable multi-platform web and mobile applications used by more than 50 multinational companies. In this context, I led the technical migration of the front-end stack from Webpack and Jest to the Vite and Vitest ecosystem, reducing the average build time from 10 to 4 minutes and modernizing the project's architecture. I created integration solutions for consuming REST and GraphQL APIs in internationalized interfaces (Portuguese, English, and Spanish) using i18n, and set up CI/CD pipelines and build processes for SPA, PWA, and SSR applications, leveraging Docker and Capacitor for distribution across web, Android, and iOS.
+On the backend, I implemented modules, integrations, business rules, and automated tests for REST and GraphQL APIs. I also fixed vulnerabilities in Node.js ecosystem packages using npm/pnpm and documented best practices for secure dependency maintenance. Finally, I designed and implemented an offline-first architecture with automatic data synchronization, enabling full application functionality even without an internet connection.
+          </p>
+          <div class="project-techs">
+            <span class="ui-chip">Vue / Node</span>
+            <span class="ui-chip">MySQL</span>
+            <span class="ui-chip">Docker</span>
+            <span class="ui-chip">JavaScript</span>
+            <span class="ui-chip">TypeScript</span>
+          </div>
+          <div class="project-footer">
+            <a href="#contato" class="project-link" aria-label="Ver detalhes do Projeto em Destaque 02">
+              <span>Ver detalhes</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Contato (Estrutura Base) -->
+  <section id="contato" class="content-section" aria-labelledby="contato-title">
+    <div class="container">
+      <div class="ui-card contact-card">
+        <div class="contact-content">
+          <h2 id="contato-title" class="contact-title">Vamos conversar?</h2>
+          <p class="contact-description">
+            Aberto para novas oportunidades, projetos desafiadores e parcerias técnicas.
+          </p>
+        </div>
+
+        <div class="contact-actions">
+          <a
+            href="mailto:contato@bryandbernhardt.dev"
+            class="btn btn-primary"
+            aria-label="Enviar email para Bryan Dietrich Bernhardt"
+          >
+            <span>Enviar mensagem</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+          <a
+            href="https://linkedin.com/in/bryandbernhardt"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+            aria-label="Conectar no LinkedIn de Bryan Dietrich Bernhardt (abre em nova aba)"
+          >
+            <span>LinkedIn</span>
+            <span aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ==========================================================================
+     Hero Section (Mobile-First)
+     ========================================================================== */
+  .hero-section {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-12);
+  }
+
+  @media (min-width: 640px) {
+    .hero-section {
+      padding-top: var(--space-12);
+      padding-bottom: var(--space-16);
+    }
+  }
+
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  /* Status Badge com pulso verde acessível */
+  .hero-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    color: var(--color-text-muted);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .status-pulse {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8px;
+    height: 8px;
+  }
+
+  .status-pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-success);
+  }
+
+  .hero-header-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .hero-title {
+    font-size: var(--font-size-3xl);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+  }
+
+  .hero-description {
+    max-width: 42rem;
+    font-size: var(--font-size-base);
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  /* Botões de Ação (Mobile-First: coluna em < 640px, linha em >= 640px) */
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  @media (min-width: 640px) {
+    .hero-actions {
+      flex-direction: row;
+      width: auto;
+      gap: var(--space-4);
+    }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
+    min-height: 48px;
+    padding-inline: var(--space-6);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  @media (min-width: 640px) {
+    .btn {
+      width: auto;
+    }
+  }
+
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
+    border: 1px solid var(--color-primary);
+    box-shadow: var(--shadow-card);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    color: var(--color-primary-contrast);
+  }
+
+  .btn-secondary {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-surface-hover);
+    border-color: var(--color-border-strong);
+    color: var(--color-text);
+  }
+
+  .btn-arrow {
+    transition: transform var(--transition-fast);
+  }
+
+  .btn:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+
+  /* ==========================================================================
+     Seções de Conteúdo
+     ========================================================================== */
+  .content-section {
+    padding-block: var(--space-12);
+    border-top: 1px solid var(--color-border);
+  }
+
+  @media (min-width: 640px) {
+    .content-section {
+      padding-block: var(--space-16);
+    }
+  }
+
+  .section-header {
+    margin-bottom: var(--space-6);
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: var(--space-1);
+  }
+
+  .section-lead {
+    font-size: var(--font-size-base);
+    color: var(--color-text-muted);
+  }
+
+  /* Card Sobre */
+  .about-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .about-text {
+    font-size: var(--font-size-base);
+    color: var(--color-text-muted);
+    max-width: 48rem;
+    line-height: 1.7;
+  }
+
+  .stack-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .stack-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+  }
+
+  /* Grid de Projetos */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .project-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .project-tag {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .project-year {
+    font-size: var(--font-size-xs);
+    font-family: var(--font-mono);
+  }
+
+  .project-title {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+  }
+
+  .project-description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .project-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+
+  .project-footer {
+    margin-top: var(--space-2);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    min-height: 44px;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .project-link:hover {
+    color: var(--color-primary-hover);
+    transform: translateX(2px);
+  }
+
+  /* Card de Contato */
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    background-color: var(--color-surface);
+  }
+
+  @media (min-width: 768px) {
+    .contact-card {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .contact-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-1);
+  }
+
+  .contact-description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-muted);
+    max-width: 32rem;
+  }
+
+  .contact-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .contact-actions {
+      flex-direction: row;
+      width: auto;
+    }
+  }
+</style>
