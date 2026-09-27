@@ -16,6 +16,18 @@ const stackHighlights = [
   'Linux',
   'Git',
 ];
+const projects = [
+  {
+    title: 'OK Automotive distributor ecosystem',
+    description: 'Developed end-to-end modules, from data architecture and modeling through backend and frontend implementation. Built and trained machine learning models, integrating them via APIs. Resolved bugs and actively participated in Scrum meetings and planning sessions for new features and projects.',
+    link: '#contato',
+  },
+  {
+    title: 'Minha Visita',
+    description: 'I developed and maintained scalable multi-platform web and mobile applications used by more than 50 multinational companies. In this context, I led the technical migration of the front-end stack from Webpack and Jest to the Vite and Vitest ecosystem, reducing the average build time from 10 to 4 minutes and modernizing the project\'s architecture. I created integration solutions for consuming REST and GraphQL APIs in internationalized interfaces (Portuguese, English, and Spanish) using i18n, and set up CI/CD pipelines and build processes for SPA, PWA, and SSR applications, leveraging Docker and Capacitor for distribution across web, Android, and iOS. On the backend, I implemented modules, integrations, business rules, and automated tests for REST and GraphQL APIs. I also fixed vulnerabilities in Node.js ecosystem packages using npm/pnpm and documented best practices for secure dependency maintenance. Finally, I designed and implemented an offline-first architecture with automatic data synchronization, enabling full application functionality even without an internet connection.',
+    link: '#contato',
+  },
+];
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -96,56 +108,36 @@ const stackHighlights = [
       </div>
 
       <div class="projects-grid">
-        <!-- OK -->
-        <article class="ui-card project-card">
-          <div class="project-card-header">
-            <span class="project-tag">Full Stack software engineer</span>
-            <span class="project-year" aria-label="Ano">2026</span>
-          </div>
-          <h3 class="project-title">OK Automotive distributor ecosystem</h3>
-          <p class="project-description">
-            Developed end-to-end modules, from data architecture and modeling through backend and frontend implementation. Built and trained machine learning models, integrating them via APIs. Resolved bugs and actively participated in Scrum meetings and planning sessions for new features and projects.
-          </p>
-          <div class="project-techs">
-            <span class="ui-chip">.NET</span>
-            <span class="ui-chip">Angular</span>
-            <span class="ui-chip">C#</span>
-            <span class="ui-chip">TypeScript</span>
-            <span class="ui-chip">ML.NET</span>
-          </div>
-          <div class="project-footer">
-            <a href="#contato" class="project-link" aria-label="Ver detalhes do Projeto em Destaque 01">
-              <span>Ver detalhes</span>
-              <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- Card de Projeto Base 2 -->
-        <article class="ui-card project-card">
-          <div class="project-card-header">
-            <span class="project-tag">Full Stack software engineer</span>
-            <span class="project-year" aria-label="Ano">2026</span>
-          </div>
-          <h3 class="project-title">Minha Visita</h3>
-          <p class="project-description">
-            I developed and maintained scalable multi-platform web and mobile applications used by more than 50 multinational companies. In this context, I led the technical migration of the front-end stack from Webpack and Jest to the Vite and Vitest ecosystem, reducing the average build time from 10 to 4 minutes and modernizing the project's architecture. I created integration solutions for consuming REST and GraphQL APIs in internationalized interfaces (Portuguese, English, and Spanish) using i18n, and set up CI/CD pipelines and build processes for SPA, PWA, and SSR applications, leveraging Docker and Capacitor for distribution across web, Android, and iOS.
-On the backend, I implemented modules, integrations, business rules, and automated tests for REST and GraphQL APIs. I also fixed vulnerabilities in Node.js ecosystem packages using npm/pnpm and documented best practices for secure dependency maintenance. Finally, I designed and implemented an offline-first architecture with automatic data synchronization, enabling full application functionality even without an internet connection.
-          </p>
-          <div class="project-techs">
-            <span class="ui-chip">Vue / Node</span>
-            <span class="ui-chip">MySQL</span>
-            <span class="ui-chip">Docker</span>
-            <span class="ui-chip">JavaScript</span>
-            <span class="ui-chip">TypeScript</span>
-          </div>
-          <div class="project-footer">
-            <a href="#contato" class="project-link" aria-label="Ver detalhes do Projeto em Destaque 02">
-              <span>Ver detalhes</span>
-              <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
-        </article>
+        {
+          projects.map((project) => (
+            <article class="ui-card project-card">
+              <div class="project-card-header">
+                <span class="project-tag">Full Stack software engineer</span>
+                <span class="project-year" aria-label="Ano">2026</span>
+              </div>
+              <h3 class="project-title">{project.title}</h3>
+              <p class="project-description" ref={descriptionRef}>
+                {project.description.split('\n').slice(0, 3).join('\n') + '...'}
+              </p>
+              <button onclick={() => setIsExpanded(!isExpanded())}>
+                {isExpanded() ? 'Mostrar menos' : 'Mostrar mais'}
+              </button>
+              <div class="project-techs">
+                <span class="ui-chip">.NET</span>
+                <span class="ui-chip">Angular</span>
+                <span class="ui-chip">C#</span>
+                <span class="ui-chip">TypeScript</span>
+                <span class="ui-chip">ML.NET</span>
+              </div>
+              <div class="project-footer">
+                <a href="#contato" class="project-link" aria-label="Ver detalhes do Projeto em Destaque 01">
+                  <span>Ver detalhes</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -458,6 +450,11 @@ On the backend, I implemented modules, integrations, business rules, and automat
     color: var(--color-text-muted);
     line-height: 1.6;
     flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
   .project-techs {
