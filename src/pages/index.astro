@@ -121,7 +121,7 @@ let isExpanded = false;
               <p class="project-description">
                 {project.description.split('\n').slice(0, 3).join('\n') + '...'}
               </p>
-              <button onclick={() => setIsExpanded(!isExpanded())}>
+              <button onclick={() => setIsExpanded(!isExpanded)}>
                 {isExpanded ? 'Mostrar menos' : 'Mostrar mais'}
               </button>
               <div class="project-techs">
