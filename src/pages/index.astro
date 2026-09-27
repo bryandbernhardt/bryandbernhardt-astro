@@ -29,7 +29,7 @@ const projects = [
   },
 ];
 
-let isExpanded = false
+let isExpanded = false;
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -122,7 +122,7 @@ let isExpanded = false
                 {project.description.split('\n').slice(0, 3).join('\n') + '...'}
               </p>
               <button onclick={() => setIsExpanded(!isExpanded())}>
-                {isExpanded() ? 'Mostrar menos' : 'Mostrar mais'}
+                {isExpanded ? 'Mostrar menos' : 'Mostrar mais'}
               </button>
               <div class="project-techs">
                 <span class="ui-chip">.NET</span>
