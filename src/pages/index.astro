@@ -116,7 +116,7 @@ const projects = [
                 <span class="project-year" aria-label="Ano">2026</span>
               </div>
               <h3 class="project-title">{project.title}</h3>
-              <p class="project-description" ref={descriptionRef}>
+              <p class="project-description">
                 {project.description.split('\n').slice(0, 3).join('\n') + '...'}
               </p>
               <button onclick={() => setIsExpanded(!isExpanded())}>
