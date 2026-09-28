@@ -27,7 +27,7 @@ Desenvolvido para atender aos mais rigorosos critérios de qualidade web, visand
 - **Padrões Web**: `<!DOCTYPE html>`, charset UTF-8, meta tags de viewport e `color-scheme: light dark`.
 - **Favicon Vetorial e Manifest**: `favicon.svg`, `favicon.ico` e `site.webmanifest` configurados.
 - **Segurança & Referência**: Políticas de `referrer` estritas e `rel="noopener noreferrer"` em links externos.
-- **Página 404 Personalizada**: [src/pages/404.astro](file:///home/bryan/Dev/bryandbernhardt/src/pages/404.astro) pronta e semântica.
+- **Página 404 Personalizada**: [src/pages/404.astro](src/pages/404.astro) pronta e semântica.
 
 ### 4. SEO (100)
 - **Sitemap XML**: Geração automática via integração `@astrojs/sitemap`.
