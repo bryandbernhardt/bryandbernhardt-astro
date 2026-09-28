@@ -44,7 +44,7 @@ export const siteContent = {
           title: 'OK Automotive distribution ecosystem',
           description:
             'Delivered end-to-end platform work spanning data modeling, backend logic, frontend implementation, and operational support. Built and integrated machine learning models through APIs, resolved defects, and participated in Scrum ceremonies, planning, and roadmap decisions.',
-          techs: ['.NET', 'Angular', 'TypeScript', 'Node.js', 'SQL', 'Git', 'C#', 'REST'],
+          techs: ['.NET', 'Angular', 'TypeScript', 'ML.NET', 'Node.js', 'SQL', 'Git', 'C#', 'REST'],
         },
         {
           title: 'Minha Visita',
@@ -118,7 +118,7 @@ export const siteContent = {
           title: 'Ecossistema de distribuição OK Automotive',
           description:
             'Atuei no desenvolvimento de módulos da plataforma, cobrindo modelagem de dados, lógica de backend, implementação de frontend e integrações de múltiplas APIs. Construi e integrei modelos de machine learning, corrigi bugs e participei de reuniões de Scrum, planejamento e decisões de roadmap.',
-          techs: ['.NET', 'Angular', 'TypeScript', 'ML.NET' 'Node.js', 'SQL', 'Git', 'C#', 'REST'],
+          techs: ['.NET', 'Angular', 'TypeScript', 'ML.NET', 'Node.js', 'SQL', 'Git', 'C#', 'REST'],
         },
         {
           title: 'Minha Visita',
@@ -192,7 +192,7 @@ export const siteContent = {
           title: 'Ecosistema de distribución OK Automotive',
           description:
             'Participé en el desarrollo integral de la plataforma, cubriendo modelado de datos, lógica de backend, implementación del frontend y soporte operativo. Construí e integré modelos de machine learning a través de APIs, corrigi errores y participé en ceremonias de Scrum, planificación y decisiones de roadmap.',
-          techs: ['.NET', 'Angular', 'TypeScript', 'Node.js', 'SQL', 'Git', 'C#', 'REST'],
+          techs: ['.NET', 'Angular', 'TypeScript', 'ML.NET', 'Node.js', 'SQL', 'Git', 'C#', 'REST'],
         },
         {
           title: 'Minha Visita',
