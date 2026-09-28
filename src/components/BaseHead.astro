@@ -1,0 +1,94 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  lang?: 'en' | 'pt' | 'es';
+}
+
+const siteURL = new URL(Astro.site ?? 'https://bryandbernhardt.com');
+const localeConfig = {
+  en: { code: 'en_US', href: '/' },
+  pt: { code: 'pt_BR', href: '/pt/' },
+  es: { code: 'es_ES', href: '/es/' },
+} as const;
+
+const {
+  title = 'Bryan Dietrich Bernhardt',
+  description = 'Bryan Dietrich Bernhardt — Full Stack Developer',
+  image = '/favicon.svg',
+  lang = 'en',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname.replace(/\/+$/, '') || '/', siteURL);
+const imageURL = new URL(image, siteURL);
+const currentLocale = localeConfig[lang] ?? localeConfig.en;
+const alternateLinks = Object.entries(localeConfig).map(([locale, config]) => ({
+  locale,
+  href: new URL(config.href, siteURL).toString(),
+  code: config.code,
+}));
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Bryan Dietrich Bernhardt',
+  jobTitle: 'Full Stack Developer',
+  url: siteURL.toString(),
+  sameAs: [
+    'https://www.linkedin.com/in/bryandbernhardt',
+    'https://github.com/bryandbernhardt',
+  ],
+};
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<meta name="author" content="Bryan Dietrich Bernhardt" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content={description} />
+
+<!-- Theme Colors for System Preferences -->
+<meta name="theme-color" content="#0b0f19" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+
+<!-- Favicon & Manifest -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- Canonical and alternate language URLs -->
+<link rel="canonical" href={canonicalURL} />
+{alternateLinks.map(({ locale, href, code }) => (
+  <>
+    <link rel="alternate" hreflang={locale === 'en' ? 'en' : locale} href={href} />
+    {locale === 'en' && <link rel="alternate" hreflang="x-default" href={href} />}
+    <meta property={`og:locale:alternate`} content={code} />
+  </>
+))}
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageURL} />
+<meta property="og:site_name" content="Bryan Dietrich Bernhardt" />
+<meta property="og:locale" content={currentLocale.code} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={imageURL} />
+
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />

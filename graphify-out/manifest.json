@@ -1,0 +1,74 @@
+{
+  ".vscode/extensions.json": {
+    "mtime": 1790240929.0,
+    "seen": 1790527923.9935327,
+    "ast_hash": "3adedb22d082dbd1ebb00b75d21403aa",
+    "semantic_hash": "3adedb22d082dbd1ebb00b75d21403aa"
+  },
+  ".vscode/launch.json": {
+    "mtime": 1790240929.0,
+    "seen": 1790527923.9935365,
+    "ast_hash": "60493763dcbc2d109e57da86d997602a",
+    "semantic_hash": "60493763dcbc2d109e57da86d997602a"
+  },
+  "astro.config.mjs": {
+    "mtime": 1790519924.8825707,
+    "seen": 1790527923.9935386,
+    "ast_hash": "8288a748fc28e5dc5c6b3809163282ca",
+    "semantic_hash": "8288a748fc28e5dc5c6b3809163282ca"
+  },
+  "package.json": {
+    "mtime": 1790519950.354909,
+    "seen": 1790527923.9935396,
+    "ast_hash": "0234875645cee50ba9e1081140d9f78f",
+    "semantic_hash": "0234875645cee50ba9e1081140d9f78f"
+  },
+  "src/components/BaseHead.astro": {
+    "mtime": 1790520036.712038,
+    "seen": 1790527923.9935405,
+    "ast_hash": "06aa1b713b28a75b6596ec1600b03f5b",
+    "semantic_hash": "06aa1b713b28a75b6596ec1600b03f5b"
+  },
+  "src/components/Footer.astro": {
+    "mtime": 1790525536.618359,
+    "seen": 1790527923.9935415,
+    "ast_hash": "2de6dea6e87b2060faa2ac63e58ef16b",
+    "semantic_hash": "2de6dea6e87b2060faa2ac63e58ef16b"
+  },
+  "src/components/Header.astro": {
+    "mtime": 1790527749.2032022,
+    "seen": 1790527923.9935422,
+    "ast_hash": "d74e63859806a4d591f661cc8b5a4580",
+    "semantic_hash": "d74e63859806a4d591f661cc8b5a4580"
+  },
+  "src/components/SkipLink.astro": {
+    "mtime": 1790520057.1050684,
+    "seen": 1790527923.9935431,
+    "ast_hash": "f3af4f32156975c74ee294ae86de5567",
+    "semantic_hash": "f3af4f32156975c74ee294ae86de5567"
+  },
+  "src/layouts/BaseLayout.astro": {
+    "mtime": 1790520094.205124,
+    "seen": 1790527923.993544,
+    "ast_hash": "84918b9b5d60d8abed82dccb082135ea",
+    "semantic_hash": "84918b9b5d60d8abed82dccb082135ea"
+  },
+  "src/pages/404.astro": {
+    "mtime": 1790525548.8903642,
+    "seen": 1790527923.993545,
+    "ast_hash": "23ef3081568ba06b243e26946976a4f1",
+    "semantic_hash": "23ef3081568ba06b243e26946976a4f1"
+  },
+  "src/pages/index.astro": {
+    "mtime": 1790525519.5573523,
+    "seen": 1790527923.9935458,
+    "ast_hash": "951ab912c4a24ff0614fa4bd150a5158",
+    "semantic_hash": "951ab912c4a24ff0614fa4bd150a5158"
+  },
+  "tsconfig.json": {
+    "mtime": 1790240929.0,
+    "seen": 1790527923.9935467,
+    "ast_hash": "1d3613ac08bdda17e2b82251613dbc21",
+    "semantic_hash": "1d3613ac08bdda17e2b82251613dbc21"
+  }
+}

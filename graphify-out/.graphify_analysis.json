@@ -1,0 +1,159 @@
+{
+  "communities": {
+    "0": [
+      "src_components_basehead",
+      "src_components_basehead_canonicalurl",
+      "src_components_basehead_imageurl",
+      "src_components_footer",
+      "src_components_footer_sociallinks",
+      "src_components_skiplink",
+      "src_layouts_baselayout",
+      "src_pages_404",
+      "src_pages_index",
+      "src_pages_index_stackhighlights",
+      "src_styles_global"
+    ],
+    "1": [
+      "src_components_header",
+      "src_components_header_closemenu",
+      "src_components_header_navitems",
+      "src_components_header_openmenu",
+      "src_components_header_setactivelink",
+      "src_components_header_syncactivewithurl",
+      "src_components_header_togglemenu"
+    ],
+    "2": [
+      "package",
+      "package_name",
+      "package_type",
+      "package_version",
+      "ref_astrojs_check",
+      "ref_typescript"
+    ],
+    "3": [
+      "package_scripts",
+      "package_scripts_astro",
+      "package_scripts_build",
+      "package_scripts_check",
+      "package_scripts_dev",
+      "package_scripts_preview"
+    ],
+    "4": [
+      "ref_astro_tsconfigs_strict",
+      "tsconfig",
+      "tsconfig_exclude",
+      "tsconfig_extends",
+      "tsconfig_include"
+    ],
+    "5": [
+      "astro_config",
+      "ref_astro",
+      "ref_astrojs_sitemap"
+    ],
+    "6": [
+      "package_dependencies",
+      "package_dependencies_astro",
+      "package_dependencies_astrojs_sitemap"
+    ],
+    "7": [
+      "package_devdependencies",
+      "package_devdependencies_astrojs_check",
+      "package_devdependencies_typescript"
+    ],
+    "8": [
+      "package_allowscripts",
+      "package_allowscripts_esbuild"
+    ],
+    "9": [
+      "package_engines",
+      "package_engines_node"
+    ]
+  },
+  "cohesion": {
+    "0": 0.18181818181818182,
+    "1": 0.42857142857142855,
+    "2": 0.3333333333333333,
+    "3": 0.3333333333333333,
+    "4": 0.4,
+    "5": 0.6666666666666666,
+    "6": 0.6666666666666666,
+    "7": 0.6666666666666666,
+    "8": 1.0,
+    "9": 1.0
+  },
+  "gods": [
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 6
+    },
+    {
+      "id": "src_components_header_togglemenu",
+      "label": "toggleMenu()",
+      "degree": 3
+    },
+    {
+      "id": "src_components_header_closemenu",
+      "label": "closeMenu()",
+      "degree": 2
+    },
+    {
+      "id": "src_components_header_openmenu",
+      "label": "openMenu()",
+      "degree": 2
+    },
+    {
+      "id": "src_components_header_setactivelink",
+      "label": "setActiveLink()",
+      "degree": 2
+    },
+    {
+      "id": "src_components_header_syncactivewithurl",
+      "label": "syncActiveWithURL()",
+      "degree": 2
+    },
+    {
+      "id": "ref_astro",
+      "label": "astro",
+      "degree": 2
+    },
+    {
+      "id": "ref_astrojs_sitemap",
+      "label": "@astrojs/sitemap",
+      "degree": 2
+    },
+    {
+      "id": "package_allowscripts",
+      "label": "allowScripts",
+      "degree": 2
+    },
+    {
+      "id": "package_engines",
+      "label": "engines",
+      "degree": 2
+    }
+  ],
+  "surprises": [],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `scripts` connect `scripts` to `package.json`?",
+      "why": "High betweenness centrality (0.097) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `dependencies` to `package.json`?",
+      "why": "High betweenness centrality (0.042) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `devDependencies` connect `devDependencies` to `package.json`?",
+      "why": "High betweenness centrality (0.042) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `canonicalURL`, `imageURL`, `socialLinks` to the rest of the system?",
+      "why": "25 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}

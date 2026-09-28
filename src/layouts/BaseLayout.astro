@@ -1,0 +1,37 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  lang?: 'en' | 'pt' | 'es';
+}
+
+const {
+  title = 'Bryan Dietrich Bernhardt',
+  description = 'Bryan Dietrich Bernhardt — Full Stack Developer',
+  image = '/favicon.svg',
+  lang = 'en',
+} = Astro.props;
+
+const htmlLang = lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US';
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+  <head>
+    <BaseHead title={title} description={description} image={image} lang={lang} />
+    <slot name="head" />
+  </head>
+  <body class="bg-white text-zinc-900 dark:bg-[#090d16] dark:text-slate-50">
+    <Header lang={lang} />
+    <main id="main-content" class="main-content bg-white dark:bg-[#090d16]" tabindex="-1">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

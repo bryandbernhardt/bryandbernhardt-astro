@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+.arrow-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.85rem;
+  height: 0.85rem;
+  flex-shrink: 0;
+  color: currentColor;
+  transition: transform 0.15s ease;
+}
+
+.arrow-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.arrow-icon--right {
+  transform: translateX(0);
+}
+
+.group:hover .arrow-icon--right,
+:focus-visible + .arrow-icon--right,
+:hover > .arrow-icon--right {
+  transform: translateX(2px);
+}
+
+.arrow-icon--diag {
+  transform: translate(0, 0);
+}
+
+.group:hover .arrow-icon--diag,
+:hover > .arrow-icon--diag {
+  transform: translate(2px, -2px);
+}

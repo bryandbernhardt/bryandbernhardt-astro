@@ -1,0 +1,261 @@
+---
+interface Props {
+  lang?: 'en' | 'pt' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const localePathMap = {
+  en: '/',
+  pt: '/pt',
+  es: '/es',
+} as const;
+
+const navItems = {
+  en: [
+    { href: '/', label: 'Home' },
+    { href: '#about', label: 'About' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#contact', label: 'Contact' },
+  ],
+  pt: [
+    { href: '/pt', label: 'Início' },
+    { href: '#sobre', label: 'Sobre' },
+    { href: '#projetos', label: 'Projetos' },
+    { href: '#contato', label: 'Contato' },
+  ],
+  es: [
+    { href: '/es', label: 'Inicio' },
+    { href: '#sobre', label: 'Sobre' },
+    { href: '#proyectos', label: 'Proyectos' },
+    { href: '#contacto', label: 'Contacto' },
+  ],
+};
+
+const languageOptions = [
+  { value: 'en', label: 'English', path: '/' },
+  { value: 'pt', label: 'Português', path: '/pt' },
+  { value: 'es', label: 'Español', path: '/es' },
+];
+
+const menuLabels = {
+  en: { open: 'Open navigation menu', close: 'Close navigation menu' },
+  pt: { open: 'Abrir menu de navegação', close: 'Fechar menu de navegação' },
+  es: { open: 'Abrir menú de navegación', close: 'Cerrar menú de navegación' },
+} as const;
+
+const languageLabel = {
+  en: 'Select language',
+  pt: 'Selecionar idioma',
+  es: 'Seleccionar idioma',
+} as const;
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-zinc-200 dark:border-slate-800 bg-white/90 dark:bg-[#090d16]/90 backdrop-blur-md">
+  <div class="mx-auto flex h-17 w-full max-w-[68rem] items-center justify-between gap-4 px-4 sm:px-8 relative">
+    <a href={localePathMap[lang]} class="brand-link inline-flex min-h-[48px] items-center px-1 text-zinc-950 dark:text-slate-50 transition-colors hover:text-sky-600 dark:hover:text-sky-400" aria-label={lang === 'pt' ? 'Página inicial de Bryan Dietrich Bernhardt' : lang === 'es' ? 'Página de inicio de Bryan Dietrich Bernhardt' : 'Bryan Dietrich Bernhardt home page'}>
+      <span class="text-base font-bold tracking-tight">Bryan D Bernhardt</span>
+    </a>
+
+    <button
+      type="button"
+      id="menu-toggle"
+      class="group inline-flex h-12 w-12 min-h-[48px] min-w-[48px] items-center justify-center rounded-md border border-zinc-200 dark:border-slate-800 bg-zinc-100 dark:bg-[#182032] p-0 text-zinc-950 dark:text-slate-50 transition-all hover:bg-zinc-200 dark:hover:bg-[#1e283d] hover:border-zinc-300 dark:hover:border-slate-700 active:scale-95 sm:hidden"
+      aria-expanded="false"
+      aria-controls="main-nav"
+      aria-label={menuLabels[lang].open}
+    >
+      <span class="relative block h-3 w-[18px]" aria-hidden="true">
+        <span class="line-1 absolute left-0 top-0 h-[2px] w-full rounded-sm bg-current transition-all duration-200 ease-in-out group-aria-expanded:top-[5px] group-aria-expanded:rotate-45"></span>
+        <span class="line-2 absolute left-0 top-[5px] h-[2px] w-full rounded-sm bg-current transition-all duration-200 ease-in-out group-aria-expanded:opacity-0"></span>
+        <span class="line-3 absolute left-0 top-[10px] h-[2px] w-full rounded-sm bg-current transition-all duration-200 ease-in-out group-aria-expanded:top-[5px] group-aria-expanded:-rotate-45"></span>
+      </span>
+    </button>
+
+    <nav
+      id="main-nav"
+      class="main-nav hidden absolute top-full left-0 right-0 w-full border-b border-zinc-200 dark:border-slate-800 bg-white dark:bg-[#111726] p-4 shadow-xl rounded-b-xl sm:static sm:flex sm:w-auto sm:border-b-0 sm:bg-transparent sm:dark:bg-transparent sm:p-0 sm:shadow-none sm:rounded-none"
+      aria-label="Main navigation"
+    >
+      <div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-1">
+        <ul class="flex w-full flex-col gap-2 list-none sm:w-auto sm:flex-row sm:gap-1" role="list">
+          {
+            navItems[lang].map((item) => (
+              <li class="w-full sm:w-auto">
+                <a
+                  href={item.href}
+                  class="nav-link flex min-h-[48px] w-full items-center rounded-md px-4 py-3 text-base font-medium text-zinc-700 dark:text-slate-300 transition-colors hover:bg-zinc-100 dark:hover:bg-[#182032] hover:text-zinc-950 dark:hover:text-slate-50 sm:inline-flex sm:min-w-[48px] sm:justify-center sm:rounded-sm sm:px-3 sm:py-2 sm:text-sm"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <label class="relative block w-full sm:w-auto">
+          <span class="sr-only">{languageLabel[lang]}</span>
+          <select
+            id="language-select"
+            data-current-lang={lang}
+            class="w-full appearance-none rounded-md border border-zinc-200 bg-white px-3 py-2 pr-9 text-sm font-medium text-zinc-800 shadow-sm outline-none transition-colors focus:border-sky-500 dark:border-slate-800 dark:bg-[#111726] dark:text-slate-100 sm:min-w-[150px] sm:w-auto"
+            aria-label={languageLabel[lang]}
+          >
+            {
+              languageOptions.map((option) => (
+                <option value={option.value} selected={option.value === lang}>
+                  {option.label}
+                </option>
+              ))
+            }
+          </select>
+          <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-zinc-500 dark:text-slate-300">
+            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M5 7.5 10 12.5 15 7.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </label>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const languageMap = {
+    en: '/',
+    pt: '/pt',
+    es: '/es',
+  } as const;
+
+  const menuLabels = {
+    en: { open: 'Open navigation menu', close: 'Close navigation menu' },
+    pt: { open: 'Abrir menu de navegação', close: 'Fechar menu de navegação' },
+    es: { open: 'Abrir menú de navegación', close: 'Cerrar menú de navegación' },
+  } as const;
+
+  type LocaleKey = keyof typeof languageMap;
+
+  function syncHeaderHeight() {
+    const header = document.querySelector('header');
+    if (!header) return;
+    document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
+  }
+
+  function setupHeaderMenu() {
+    const toggleBtn = document.getElementById('menu-toggle') as HTMLButtonElement | null;
+    const mainNav = document.getElementById('main-nav') as HTMLElement | null;
+    if (!toggleBtn || !mainNav) return;
+
+    const safeToggleBtn = toggleBtn;
+    const safeMainNav = mainNav;
+    const links = safeMainNav.querySelectorAll<HTMLAnchorElement>('.nav-link');
+
+    const localeKey = (document.documentElement.lang.startsWith('pt') ? 'pt' : document.documentElement.lang.startsWith('es') ? 'es' : 'en') as keyof typeof menuLabels;
+
+    function openMenu() {
+      safeToggleBtn.setAttribute('aria-expanded', 'true');
+      safeToggleBtn.setAttribute('aria-label', menuLabels[localeKey].close);
+      safeMainNav.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeMenu() {
+      safeToggleBtn.setAttribute('aria-expanded', 'false');
+      safeToggleBtn.setAttribute('aria-label', menuLabels[localeKey].open);
+      safeMainNav.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    function toggleMenu() {
+      const isExpanded = safeToggleBtn.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    safeToggleBtn.addEventListener('click', toggleMenu);
+
+    links.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 640) {
+          closeMenu();
+        }
+      });
+    });
+
+    document.addEventListener('keydown', (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && safeToggleBtn.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+        safeToggleBtn.focus();
+      }
+    });
+
+    document.addEventListener('click', (event: MouseEvent) => {
+      const target = event.target as Node | null;
+      if (
+        safeToggleBtn.getAttribute('aria-expanded') === 'true' &&
+        target &&
+        !safeToggleBtn.contains(target) &&
+        !safeMainNav.contains(target)
+      ) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 640 && safeToggleBtn.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+      }
+    });
+  }
+
+  function setupLocaleSelector() {
+    const select = document.getElementById('language-select') as HTMLSelectElement | null;
+    if (!select) return;
+
+    const currentLocale = select.dataset.currentLang || 'en';
+    const browserLanguage = ((navigator.languages && navigator.languages[0]) || navigator.language || 'en-US').toLowerCase();
+
+    select.value = currentLocale;
+
+    select.addEventListener('change', (event) => {
+      const target = event.target as HTMLSelectElement;
+      const nextLocale = target.value as LocaleKey;
+      const targetPath = languageMap[nextLocale] || '/';
+
+      localStorage.setItem('preferred-language', nextLocale);
+      window.location.href = targetPath;
+    });
+
+    const savedPreference = localStorage.getItem('preferred-language');
+    if (savedPreference && savedPreference !== currentLocale) {
+      const targetPath = languageMap[savedPreference as LocaleKey] || '/';
+      const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+      if (currentPath !== targetPath) {
+        window.location.replace(targetPath);
+      }
+    }
+
+    if (!savedPreference) {
+      const detectedLocale = browserLanguage.startsWith('pt') ? 'pt' : browserLanguage.startsWith('es') ? 'es' : 'en';
+      const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+      const targetPath = languageMap[detectedLocale as LocaleKey] || '/';
+
+      if (currentPath === '/' && detectedLocale !== 'en') {
+        window.location.replace(targetPath);
+      }
+    }
+  }
+
+  syncHeaderHeight();
+  setupHeaderMenu();
+  setupLocaleSelector();
+  window.addEventListener('resize', syncHeaderHeight);
+  document.addEventListener('astro:after-swap', () => {
+    syncHeaderHeight();
+    setupHeaderMenu();
+    setupLocaleSelector();
+  });
+</script>

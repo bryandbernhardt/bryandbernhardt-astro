@@ -1,0 +1,312 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteContent, type Locale } from '../lib/siteContent';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'en' } = Astro.props;
+const content = siteContent[lang];
+const pageTitle = content.meta.title;
+const pageDescription = content.meta.description;
+const stackHighlights = content.stackHighlights;
+const projects = content.projects.items;
+const ids = {
+  en: { about: 'about', projects: 'projects', contact: 'contact' },
+  pt: { about: 'sobre', projects: 'projetos', contact: 'contato' },
+  es: { about: 'sobre', projects: 'proyectos', contact: 'contacto' },
+};
+const currentIds = ids[lang];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} lang={lang}>
+  <section class="hero-section flex items-center pt-8 pb-12 sm:pt-12 sm:pb-16" aria-labelledby="hero-title">
+    <div class="mx-auto w-full max-w-[68rem] px-4 sm:px-8 flex flex-col items-start gap-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 text-xs font-medium text-zinc-700 dark:text-slate-300 bg-white dark:bg-[#111726] border border-zinc-200 dark:border-slate-800 rounded-full shadow-sm" role="status">
+        <span class="relative flex h-2 w-2 items-center justify-center" aria-hidden="true">
+          <span class="h-2 w-2 rounded-full bg-green-600 dark:bg-green-500"></span>
+        </span>
+        <span>{content.status}</span>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.15] text-zinc-900 dark:text-slate-50">
+          Bryan Dietrich Bernhardt
+        </h1>
+        <p class="text-xl sm:text-2xl font-semibold tracking-tight text-sky-900 dark:text-sky-200 leading-snug">
+          Full Stack Developer
+        </p>
+      </div>
+
+      <p class="max-w-2xl text-base text-zinc-800 dark:text-slate-200 leading-relaxed">
+        {content.about.description}
+      </p>
+
+      <div class="mt-2 flex flex-col sm:flex-row w-full sm:w-auto gap-3 sm:gap-4">
+        <a
+          href={`#${currentIds.contact}`}
+          class="group inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-sky-600 dark:bg-sky-400 px-6 text-sm font-semibold text-white dark:text-[#090d16] border border-sky-600 dark:border-sky-400 shadow-sm transition-all hover:bg-sky-700 dark:hover:bg-sky-300 hover:border-sky-700 dark:hover:border-sky-300 active:scale-[0.98]"
+        >
+          <span>{content.cta.contact}</span>
+          <span class="transition-transform duration-150 group-hover:translate-x-0.5" aria-hidden="true">&rarr;</span>
+        </a>
+        <a
+          href={`#${currentIds.projects}`}
+          class="inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-white dark:bg-[#111726] px-6 text-sm font-semibold text-zinc-900 dark:text-slate-50 border border-zinc-200 dark:border-slate-800 shadow-sm transition-all hover:bg-zinc-100 dark:hover:bg-[#1e283d] hover:border-zinc-300 dark:hover:border-slate-700 active:scale-[0.98]"
+        >
+          <span>{content.cta.projects}</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id={currentIds.about} class="py-12 sm:py-16 border-t border-zinc-200 dark:border-slate-800" aria-labelledby="about-title">
+    <div class="mx-auto w-full max-w-[68rem] px-4 sm:px-8">
+      <div class="mb-6">
+        <h2 id="about-title" class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-slate-50 mb-1">{content.about.title}</h2>
+        <p class="text-base text-zinc-800 dark:text-slate-200">
+          {content.about.subtitle}
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-6 rounded-xl border border-zinc-200 dark:border-slate-800 bg-white dark:bg-[#111726] p-6 shadow-sm transition-all hover:border-zinc-300 dark:hover:border-slate-700 hover:shadow-md">
+        <p class="max-w-3xl text-base text-zinc-800 dark:text-slate-200 leading-relaxed">
+          {content.about.description}
+        </p>
+
+        <div class="flex flex-col gap-3">
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-zinc-950 dark:text-slate-50">{content.about.technologiesTitle}</h3>
+          <ul class="flex flex-wrap gap-2 list-none" role="list">
+            {
+              stackHighlights.map((tech) => (
+                <li>
+                  <span class="inline-flex items-center gap-1 rounded-md border border-zinc-200 dark:border-slate-800 bg-zinc-100 dark:bg-[#182032] px-3 py-1 font-mono text-xs font-medium text-zinc-600 dark:text-slate-400 transition-colors hover:border-sky-600 dark:hover:border-sky-400 hover:text-zinc-950 dark:hover:text-slate-50">
+                    {tech}
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id={currentIds.projects} class="py-12 sm:py-16 border-t border-zinc-200 dark:border-slate-800" aria-labelledby="projects-title">
+    <div class="mx-auto w-full max-w-[68rem] px-4 sm:px-8">
+      <div class="mb-6">
+        <h2 id="projects-title" class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-slate-50 mb-1">{content.projects.title}</h2>
+        <p class="text-base text-zinc-800 dark:text-slate-200">
+          {content.projects.subtitle}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          projects.map((project, index) => (
+            <article
+              id={`project-card-${index}`}
+              data-expanded="false"
+              class="project-card flex flex-col gap-3 rounded-xl border border-zinc-200 dark:border-slate-800 bg-white dark:bg-[#111726] p-6 shadow-sm transition-all hover:border-zinc-300 dark:hover:border-slate-700 hover:shadow-md"
+            >
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold uppercase tracking-wider text-sky-700 dark:text-sky-300">{content.projects.role}</span>
+                <span class="font-mono text-xs text-zinc-600 dark:text-slate-300" aria-label={content.projects.yearLabel}>2026</span>
+              </div>
+              <h3 class="text-lg font-bold text-zinc-950 dark:text-slate-50">{project.title}</h3>
+              <p class="project-description text-sm text-zinc-700 dark:text-slate-300 leading-relaxed flex-1">
+                {project.description}
+              </p>
+
+              <button
+                type="button"
+                class="toggle-expand-btn self-start text-xs font-medium text-zinc-700 dark:text-slate-300 transition-colors hover:text-sky-700 dark:hover:text-sky-300 focus:outline-none cursor-pointer"
+              >
+                <span class="btn-text">{content.projects.more}</span>
+              </button>
+
+              <div class="mt-2 flex flex-wrap gap-2">
+                {project.techs.map((tech) => (
+                  <span class="inline-flex items-center gap-1 rounded-md border border-zinc-200 dark:border-slate-800 bg-zinc-100 dark:bg-[#182032] px-3 py-1 font-mono text-xs font-medium text-zinc-700 dark:text-slate-300 transition-colors hover:border-sky-600 dark:hover:border-sky-400 hover:text-zinc-950 dark:hover:text-slate-50">{tech}</span>
+                ))}
+              </div>
+              <div class="mt-2 pt-3 border-t border-zinc-200 dark:border-slate-800">
+                <a
+                  href={`#${currentIds.contact}`}
+                  class="group inline-flex min-h-[44px] items-center gap-1 text-sm font-semibold text-sky-700 dark:text-sky-300 transition-all hover:text-sky-800 dark:hover:text-sky-200"
+                  aria-label={content.projects.details}
+                >
+                  <span>{content.projects.details}</span>
+                  <span class="arrow-icon arrow-icon--right" aria-hidden="true">
+                    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <path d="M3.75 10h9.5M11.75 6.25 16.25 10l-4.5 3.75" />
+                    </svg>
+                  </span>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id={currentIds.contact} class="py-12 sm:py-16 border-t border-zinc-200 dark:border-slate-800" aria-labelledby="contact-title">
+    <div class="mx-auto w-full max-w-[68rem] px-4 sm:px-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 rounded-xl border border-zinc-200 dark:border-slate-800 bg-white dark:bg-[#111726] p-6 shadow-sm">
+        <div>
+          <h2 id="contact-title" class="text-xl font-bold text-zinc-950 dark:text-slate-50 mb-1">{content.contact.title}</h2>
+          <p class="max-w-xl text-base text-zinc-700 dark:text-slate-300">
+            {content.contact.description}
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row w-full md:w-auto gap-3">
+          <a
+            href="mailto:contato@bryandbernhardt.com"
+            class="group inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-sky-600 dark:bg-sky-400 px-6 text-sm font-semibold text-white dark:text-[#090d16] border border-sky-600 dark:border-sky-400 shadow-sm transition-all hover:bg-sky-700 dark:hover:bg-sky-300 hover:border-sky-700 dark:hover:border-sky-300 active:scale-[0.98]"
+            aria-label="Send email to Bryan Dietrich Bernhardt"
+          >
+            <span>{content.contact.email}</span>
+            <span class="arrow-icon arrow-icon--right" aria-hidden="true">
+              <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <path d="M3.75 10h9.5M11.75 6.25 16.25 10l-4.5 3.75" />
+              </svg>
+            </span>
+          </a>
+          <a
+            href="https://linkedin.com/in/bryandbernhardt"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-white dark:bg-[#111726] px-6 text-sm font-semibold text-zinc-900 dark:text-slate-50 border border-zinc-200 dark:border-slate-800 shadow-sm transition-all hover:bg-zinc-100 dark:hover:bg-[#1e283d] hover:border-zinc-300 dark:hover:border-slate-700 active:scale-[0.98]"
+            aria-label="Connect on Bryan Dietrich Bernhardt LinkedIn (opens in a new tab)"
+          >
+            <span>{content.contact.linkedin}</span>
+            <span class="arrow-icon arrow-icon--diag" aria-hidden="true">
+              <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <path d="M5 15 15 5M8.5 5H15v6.5" />
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  .hero-section {
+    min-height: calc(100dvh - var(--header-height, 0px));
+  }
+
+  .project-card {
+    align-self: start;
+  }
+
+  .project-card .project-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 5.8rem;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
+    opacity: 0.96;
+  }
+
+  .project-card[data-expanded='true'] .project-description {
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    max-height: none;
+    overflow: visible;
+    text-overflow: clip;
+    opacity: 1;
+  }
+</style>
+
+<script>
+  function getToggleLabel(isExpanded: boolean) {
+    if (document.body.dataset.locale === 'pt') return isExpanded ? 'Mostrar menos' : 'Mostrar mais';
+    if (document.body.dataset.locale === 'es') return isExpanded ? 'Mostrar menos' : 'Mostrar más';
+    return isExpanded ? 'Show less' : 'Show more';
+  }
+
+  function setProjectCardState(card: Element, isExpanded: boolean) {
+    const desc = card.querySelector('.project-description') as HTMLElement | null;
+    const btnText = card.querySelector('.btn-text') as HTMLElement | null;
+    const button = card.querySelector('.toggle-expand-btn') as HTMLButtonElement | null;
+
+    if (!desc || !btnText || !button) return;
+
+    card.setAttribute('data-expanded', String(isExpanded));
+    button.setAttribute('aria-expanded', String(isExpanded));
+    btnText.textContent = getToggleLabel(isExpanded);
+
+    if (isExpanded) {
+      desc.style.maxHeight = `${desc.scrollHeight}px`;
+      desc.style.display = 'block';
+      desc.style.overflow = 'visible';
+      desc.style.textOverflow = 'clip';
+    } else {
+      desc.style.maxHeight = '5.8rem';
+      desc.style.display = '-webkit-box';
+      desc.style.overflow = 'hidden';
+      desc.style.textOverflow = 'ellipsis';
+    }
+  }
+
+  function syncProjectCardToggleVisibility() {
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.project-card'));
+
+    cards.forEach((card) => {
+      const desc = card.querySelector('.project-description') as HTMLElement | null;
+      const button = card.querySelector('.toggle-expand-btn') as HTMLButtonElement | null;
+
+      if (!desc || !button) return;
+
+      const needsToggle = desc.scrollHeight > desc.clientHeight + 2;
+      button.style.display = needsToggle ? 'inline-flex' : 'none';
+
+      if (!needsToggle) {
+        card.setAttribute('data-expanded', 'false');
+        setProjectCardState(card, false);
+      }
+    });
+  }
+
+  document.body.dataset.locale = document.documentElement.lang.startsWith('pt') ? 'pt' : document.documentElement.lang.startsWith('es') ? 'es' : 'en';
+
+  function setupProjectCards() {
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.project-card'));
+
+    cards.forEach((card) => {
+      const button = card.querySelector('.toggle-expand-btn') as HTMLButtonElement | null;
+      if (!button) return;
+
+      button.addEventListener('click', (event: MouseEvent) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const isExpanded = card.getAttribute('data-expanded') === 'true';
+        const nextExpanded = !isExpanded;
+
+        cards.forEach((otherCard) => {
+          if (otherCard === card) {
+            setProjectCardState(otherCard, nextExpanded);
+          } else {
+            setProjectCardState(otherCard, false);
+          }
+        });
+      });
+    });
+
+    syncProjectCardToggleVisibility();
+  }
+
+  setupProjectCards();
+  window.addEventListener('resize', syncProjectCardToggleVisibility);
+  document.addEventListener('astro:page-load', setupProjectCards);
+</script>

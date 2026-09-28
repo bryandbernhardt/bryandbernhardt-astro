@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Host: bryandbernhardt.com
+Sitemap: https://bryandbernhardt.com/sitemap-index.xml
