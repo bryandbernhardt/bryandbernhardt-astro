@@ -196,8 +196,12 @@ const currentIds = ids[lang];
 </BaseLayout>
 
 <style is:global>
+  :root {
+    --app-vh: 100vh;
+  }
+
   .hero-section {
-    min-height: calc(100dvh - var(--header-height, 0px));
+    min-height: calc(var(--app-vh) - var(--header-height, 0px));
   }
 
   .project-card {
@@ -267,10 +271,11 @@ const currentIds = ids[lang];
 
       if (!desc || !button) return;
 
+      const isExpanded = card.getAttribute('data-expanded') === 'true';
       const needsToggle = desc.scrollHeight > desc.clientHeight + 2;
-      button.style.display = needsToggle ? 'inline-flex' : 'none';
+      button.style.display = isExpanded || needsToggle ? 'inline-flex' : 'none';
 
-      if (!needsToggle) {
+      if (!needsToggle && !isExpanded) {
         card.setAttribute('data-expanded', 'false');
         setProjectCardState(card, false);
       }
@@ -307,6 +312,12 @@ const currentIds = ids[lang];
   }
 
   setupProjectCards();
-  window.addEventListener('resize', syncProjectCardToggleVisibility);
+  const handleViewportChange = () => {
+    syncProjectCardToggleVisibility();
+  };
+
+  window.addEventListener('resize', handleViewportChange);
+  window.visualViewport?.addEventListener('resize', handleViewportChange);
+  window.visualViewport?.addEventListener('scroll', handleViewportChange);
   document.addEventListener('astro:page-load', setupProjectCards);
 </script>

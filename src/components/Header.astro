@@ -135,6 +135,11 @@ const languageLabel = {
 
   type LocaleKey = keyof typeof languageMap;
 
+  function syncViewportHeight() {
+    const viewportHeight = window.visualViewport?.height ?? window.innerHeight ?? document.documentElement.clientHeight ?? 0;
+    document.documentElement.style.setProperty('--app-vh', `${viewportHeight}px`);
+  }
+
   function syncHeaderHeight() {
     const header = document.querySelector('header');
     if (!header) return;
@@ -249,11 +254,22 @@ const languageLabel = {
     }
   }
 
+  syncViewportHeight();
   syncHeaderHeight();
   setupHeaderMenu();
   setupLocaleSelector();
-  window.addEventListener('resize', syncHeaderHeight);
+
+  const handleViewportResize = () => {
+    syncViewportHeight();
+    syncHeaderHeight();
+  };
+
+  window.addEventListener('resize', handleViewportResize);
+  window.visualViewport?.addEventListener('resize', handleViewportResize);
+  window.visualViewport?.addEventListener('scroll', handleViewportResize);
+
   document.addEventListener('astro:after-swap', () => {
+    syncViewportHeight();
     syncHeaderHeight();
     setupHeaderMenu();
     setupLocaleSelector();
