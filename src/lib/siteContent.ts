@@ -117,8 +117,8 @@ export const siteContent = {
         {
           title: 'Ecossistema de distribuição OK Automotive',
           description:
-            'Atuei no desenvolvimento completo da plataforma, cobrindo modelagem de dados, lógica de backend, implementação de frontend e suporte operacional. Construi e integrei modelos de machine learning por meio de APIs, corrigi defeitos e participei de cerimônias de Scrum, planejamento e decisões de roadmap.',
-          techs: ['.NET', 'Angular', 'TypeScript', 'Node.js', 'SQL', 'Git', 'C#', 'REST'],
+            'Atuei no desenvolvimento de módulos da plataforma, cobrindo modelagem de dados, lógica de backend, implementação de frontend e integrações de múltiplas APIs. Construi e integrei modelos de machine learning, corrigi bugs e participei de reuniões de Scrum, planejamento e decisões de roadmap.',
+          techs: ['.NET', 'Angular', 'TypeScript', 'ML.NET' 'Node.js', 'SQL', 'Git', 'C#', 'REST'],
         },
         {
           title: 'Minha Visita',
